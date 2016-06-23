@@ -10,7 +10,6 @@ import java.io.Serializable;
 /**
  * Created by x222791 on 5/25/2016.
  */
-@Region("QualificationType")
 public class QualificationType implements Serializable  {
 
     @Id

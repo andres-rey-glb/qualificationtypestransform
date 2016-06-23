@@ -10,15 +10,5 @@ import java.util.List;
  */
 public interface QualificationTypeService {
    
-    QualificationType create(QualificationType qualificationType);
-
-    List<QualificationType> findAll();
-    
-    List<QualificationType> findByFilter(QualTypeFilter filter);
-
-    QualificationType findById(Integer l);
-
-    QualificationType update(QualificationType qualificationTypeToUpdate);
-
-    void delete(QualificationType qualificationTypeToDelete);
+    Object qualiticationType2Oracle(QualificationType gemfireQualType);
 }

@@ -1,18 +1,18 @@
-QualificationType Microservice
-==========================================
+QualificationType Transformation Microservice
+=============================================
 
 The service is implemented in Java using Spring and Spring Cloud
-The implementation is exposing a REST API for CRUD operations using an embedded GemFire installation.
+The implementation is listening to a rabbitmq queue to make a
+transformation and persist the QualificationType object from Gemfire to Oracle DB.
 
 
 Technologies
 ------------
 
-- GemFire
+- Spring Data
 - Spring Boot
 - Spring Cloud
-
-
+- RabbitMQ
 
 
 How To Compile
