@@ -18,4 +18,11 @@ spring:
             spring:
               rabbitmq:
                 host: 127.0.0.1
-                
+   datasource:
+     db-qualificationtypes:
+         url: jdbc:oracle:thin:@ldap://vdlbldap05a:389/CSSFOEDV,cn=OracleContext
+         username: FODEV04
+         password: FODEV0499
+         driver-class-name: oracle.jdbc.OracleDriver
+         test-on-borrow: true
+         validation-query: SELECT 1 FROM dual
