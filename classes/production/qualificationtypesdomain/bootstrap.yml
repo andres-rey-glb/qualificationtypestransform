@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: crew-qualificationType-domain
+  cloud:
+    config:
+      uri: http://user:${PASS_KEY:S3CR3T}@localhost:8090
+      #uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@localhost:8888}
+    stream:
+      bindings:
+        output:
+          destination: qualificationtypes #Queue name
+          group: logging #this is important for having persistent messages otherwise messages are lost
+          binder: rabbit
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
