@@ -19,5 +19,6 @@ public class QualificationTypesListener {
 
     @StreamListener(Sink.INPUT)
     public void consumeQualification(QualificationType qualificationDate) {
+        qualTransformService.transformQualiticationType(qualificationDate);
     }
 }
