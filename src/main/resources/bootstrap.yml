@@ -8,7 +8,7 @@ spring:
     stream:
       bindings:
         input:
-          destination: qualificationtypes #Queue name
+          destination: qualificationtypes-gem2ora #Queue name
           group: logging #this is important for having persistent messages otherwise messages are lost
           binder: rabbit
       binders:

@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface QualificationTypeService {
    
-    Object qualiticationType2Oracle(QualificationType gemfireQualType);
+    Object transformQualiticationType(QualificationType gemfireQualType);
+    boolean persistQualificationType2Oracle(QualificationType oracleQualType);
 }

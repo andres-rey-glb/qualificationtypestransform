@@ -10,9 +10,13 @@ import java.util.Optional;
 @Service
 public class QualificationTypeServiceImpl implements QualificationTypeService {
 
+    @Override
+    public Object transformQualiticationType(QualificationType gemfireQualType) {
+        return null;
+    }
 
     @Override
-    public Object qualiticationType2Oracle(QualificationType gemfireQualType) {
-        return null;
+    public boolean persistQualificationType2Oracle(QualificationType oracleQualType) {
+        return false;
     }
 }
