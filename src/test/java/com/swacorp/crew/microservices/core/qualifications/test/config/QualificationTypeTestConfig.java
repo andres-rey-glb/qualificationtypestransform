@@ -34,6 +34,7 @@ import java.io.IOException;
 @EnableJpaRepositories(basePackages = "com.swacorp.crew.microservices.core.qualifications.repository")
 @EntityScan(basePackages = "com.swacorp.crew.microservices.core.qualifications.domain")
 @EnableBinding(Sink.class)
+@EnableTransactionManagement
 @Transactional
 public class QualificationTypeTestConfig {
 

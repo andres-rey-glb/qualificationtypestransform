@@ -12,4 +12,6 @@ public interface QualificationTypeService {
 
     Qualification transformQualiticationType(QualificationType gemfireQualType);
     Qualification persistQualificationType2Oracle(Qualification oracleQualType);
+    Qualification updateQualificationType2Oracle(Qualification oracleQualType);
+    void deleteQualificationType2Oracle(Qualification oracleQualType);
 }

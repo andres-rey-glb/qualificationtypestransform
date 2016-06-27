@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 @Service
 public class QualificationTypeServiceImpl implements QualificationTypeService {
+    private static final Logger LOG = Logger.getLogger(QualificationTypeServiceImpl.class.getName());
     @Autowired
     QualificationRepository repository;
 
@@ -23,7 +25,27 @@ public class QualificationTypeServiceImpl implements QualificationTypeService {
 
     @Override
     public Qualification persistQualificationType2Oracle(Qualification oracleQualType) {
-        return repository.saveAndFlush(oracleQualType);
+        Qualification createdQualification = null;
+        createdQualification = repository.saveAndFlush(oracleQualType);
+        LOG.info("[QUALIFICATION TYPES]-[CREATE]: Qualification created in Oracle DB. QUALSEQNUMBER: "
+                + oracleQualType.getQualseqnumber());
+        return createdQualification;
+    }
+
+    @Override
+    public Qualification updateQualificationType2Oracle(Qualification oracleQualType) {
+        Qualification updatedQualification = null;
+        updatedQualification = repository.saveAndFlush(oracleQualType);
+        LOG.info("[QUALIFICATION TYPES]-[UPDATE]: Qualification updated in Oracle DB. QUALSEQNUMBER: "
+                + oracleQualType.getQualseqnumber());
+        return updatedQualification;
+    }
+
+    @Override
+    public void deleteQualificationType2Oracle(Qualification oracleQualType) {
+        repository.delete(oracleQualType);
+        LOG.info("[QUALIFICATION TYPES]-[DELETE]: Qualification deleted in Oracle DB. QUALSEQNUMBER: "
+                + oracleQualType.getQualseqnumber());
     }
 
     private Function<QualificationType, Qualification> transformQualificationData2Oracle
