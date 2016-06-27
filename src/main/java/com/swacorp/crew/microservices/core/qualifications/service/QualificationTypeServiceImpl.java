@@ -2,6 +2,8 @@ package com.swacorp.crew.microservices.core.qualifications.service;
 
 import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
 import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualifications.repository.QualificationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.function.Function;
 
 @Service
 public class QualificationTypeServiceImpl implements QualificationTypeService {
+    @Autowired
+    QualificationRepository repository;
 
     @Override
     public Qualification transformQualiticationType(QualificationType gemfireQualType) {
@@ -18,8 +22,8 @@ public class QualificationTypeServiceImpl implements QualificationTypeService {
     }
 
     @Override
-    public boolean persistQualificationType2Oracle(QualificationType oracleQualType) {
-        return false;
+    public Qualification persistQualificationType2Oracle(Qualification oracleQualType) {
+        return repository.saveAndFlush(oracleQualType);
     }
 
     private Function<QualificationType, Qualification> transformQualificationData2Oracle

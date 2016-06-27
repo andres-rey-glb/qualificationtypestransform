@@ -1,10 +1,5 @@
 package com.swacorp.crew.microservices.core.qualifications.domain;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.gemfire.mapping.Region;
-
 import java.io.Serializable;
 
 /**
@@ -12,7 +7,6 @@ import java.io.Serializable;
  */
 public class QualificationType implements Serializable  {
 
-    @Id
     private Integer qualificationId;
     private String type;
     private String SubType;
@@ -151,31 +145,5 @@ public class QualificationType implements Serializable  {
 
     public void setSubTypeBlockMinRequired(Integer subTypeBlockMinRequired) {
         this.subTypeBlockMinRequired = subTypeBlockMinRequired;
-    }
-
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(3, 15).
-                append(qualificationId).
-                toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object testObj) {
-        if (testObj == null) {
-            return false;
-        }
-        if (testObj == this) {
-            return true;
-        }
-        if (testObj.getClass() != getClass()) {
-            return false;
-        }
-        QualificationType test = (QualificationType) testObj;
-        return new EqualsBuilder()
-                .appendSuper(super.equals(testObj))
-                .append(qualificationId, test.qualificationId)
-                .isEquals();
     }
 }

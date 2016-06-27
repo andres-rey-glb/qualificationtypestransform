@@ -1,7 +1,10 @@
 package com.swacorp.crew.microservices.core.qualifications.test.service;
 
+import com.swacorp.crew.microservices.core.qualifications.repository.QualificationRepository;
 import com.swacorp.crew.microservices.core.qualifications.test.config.QualificationTypeTestConfig;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
@@ -14,8 +17,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(classes = QualificationTypeTestConfig.class)
 @WebIntegrationTest({"server.port: 0"})
 public class QualificationTypeServiceTest {
+    @Autowired
+    QualificationRepository repository;
 
-    @Value("${local.server.port}")
-    private int port;
+    @Test
+    public void test(){}
 
 }

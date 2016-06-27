@@ -1,8 +1,8 @@
 package com.swacorp.crew.microservices.core.qualifications.repository;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
-import org.springframework.data.repository.CrudRepository;
+import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface QualificationRepository extends CrudRepository<QualificationType, Integer> {
+public interface QualificationRepository extends JpaRepository<Qualification, Long> {
 
 }

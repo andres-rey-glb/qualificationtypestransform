@@ -47,6 +47,8 @@ repositories {
     maven { url 'https://nexus-tools.swacorp.com/WPS/content/repositories/Central' }
     maven { url 'http://repositories.swacorp.com:9092/nexus/content/repositories/thirdparty' }
     maven { url 'http://repositories.swacorp.com:9092/nexus/content/repositories/JCenterBintray' }
+    maven { url 'https://mvnrepository.com/artifact/com.oracle/ojdbc14'}
+    maven { url 'https://mvnrepository.com/artifact/com.h2database/h2' }
 }
 
 
@@ -59,7 +61,7 @@ dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-eureka")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.apache.commons:commons-lang3:3.0")
-    compile("com.oracle:ojdbc14:10.2.0.2.0")
+    compile("com.oracle:ojdbc6:11.2.0.2.0")
     compile("org.springframework.security.oauth:spring-security-oauth2:2.0.6.RELEASE")
     compile("org.springframework.security:spring-security-jwt")
     compile("org.springframework.cloud:spring-cloud-starter-stream-rabbit")

@@ -1,10 +1,17 @@
 package com.swacorp.crew.microservices.core.qualifications.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 /**
  * Created by x220553 on 6/23/2016.
  */
+@Entity
+@Table(name = "QUALIFICATION", uniqueConstraints = @UniqueConstraint(columnNames = {"qualtype", "qualsubtype"}))
 public class Qualification {
-
+    @Id
     private Long qualseqnumber;
     private String qualtype;
     private String qualsubtype;

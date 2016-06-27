@@ -1,7 +1,7 @@
 package com.swacorp.crew.microservices.core.qualifications.service;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
 import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import java.util.List;
 public interface QualificationTypeService {
 
     Qualification transformQualiticationType(QualificationType gemfireQualType);
-    boolean persistQualificationType2Oracle(QualificationType oracleQualType);
+    Qualification persistQualificationType2Oracle(Qualification oracleQualType);
 }
