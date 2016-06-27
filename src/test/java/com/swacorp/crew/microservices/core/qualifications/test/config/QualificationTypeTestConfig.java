@@ -10,10 +10,7 @@ import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -34,9 +31,34 @@ import java.io.IOException;
 @EnableJpaRepositories(basePackages = "com.swacorp.crew.microservices.core.qualifications.repository")
 @EntityScan(basePackages = "com.swacorp.crew.microservices.core.qualifications.domain")
 @EnableBinding(Sink.class)
-@EnableTransactionManagement
 @Transactional
+@Profile("test")
 public class QualificationTypeTestConfig {
+    @Primary
+    @Bean(name = "testDataSource")
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Primary
+    @Bean(name = "testEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+            EntityManagerFactoryBuilder builder,
+            @Qualifier("testDataSource") DataSource dataSource) {
+        return builder
+                .dataSource(dataSource)
+                .packages("com.swacorp.crew.microservices.core.qualifications.domain")
+                .persistenceUnit("qualtypes-PU-test")
+                .build();
+    }
+
+    @Primary
+    @Bean(name = "testTransactionManager")
+    public PlatformTransactionManager transactionManager(
+            @Qualifier("testEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
+        return new JpaTransactionManager(entityManagerFactory);
+    }
 
     @Configuration
     static class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {

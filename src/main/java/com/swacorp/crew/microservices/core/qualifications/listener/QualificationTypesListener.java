@@ -23,6 +23,7 @@ public class QualificationTypesListener {
     public void consumeQualification(GenericMessage qualificationDate) {
         Qualification qual = qualTransformService.transformQualiticationType((QualificationType) qualificationDate.getPayload());
 
-        System.out.println(qualTransformService.persistQualificationType2Oracle(qual));
+        //System.out.println(qualTransformService.persistQualificationType2Oracle(qual));
+        qualTransformService.deleteQualificationType2Oracle(qual);
     }
 }
