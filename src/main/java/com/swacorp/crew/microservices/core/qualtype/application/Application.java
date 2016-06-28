@@ -1,4 +1,4 @@
-package com.swacorp.crew.microservices.core.qualifications.application;
+package com.swacorp.crew.microservices.core.qualtype.application;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +17,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -25,10 +24,10 @@ import java.io.IOException;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.swacorp.crew.microservices.core.qualifications.service",
-        "com.swacorp.crew.microservices.core.qualifications.listener"})
-@EnableJpaRepositories(basePackages = "com.swacorp.crew.microservices.core.qualifications.repository")
-@EntityScan(basePackages = "com.swacorp.crew.microservices.core.qualifications.domain")
+@ComponentScan(basePackages = {"com.swacorp.crew.microservices.core.qualtype.service",
+        "com.swacorp.crew.microservices.core.qualtype.listener"})
+@EnableJpaRepositories(basePackages = "com.swacorp.crew.microservices.core.qualtype.repository")
+@EntityScan(basePackages = "com.swacorp.crew.microservices.core.qualtype.domain")
 @EnableDiscoveryClient
 @EnableResourceServer
 public class Application {
@@ -47,7 +46,7 @@ public class Application {
             @Qualifier("dataSource") DataSource dataSource) {
         return builder
                 .dataSource(dataSource)
-                .packages("com.swacorp.crew.microservices.core.qualifications.domain")
+                .packages("com.swacorp.crew.microservices.core.qualtype.domain")
                 .persistenceUnit("qualtypes-PU")
                 .build();
     }

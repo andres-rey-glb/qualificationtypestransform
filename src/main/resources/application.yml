@@ -10,6 +10,7 @@ security:
       jwt:
         key-uri: http://localhost:9999/uaa/oauth/token_key
 
+
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10

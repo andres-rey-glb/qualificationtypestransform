@@ -1,20 +1,17 @@
-package com.swacorp.crew.microservices.core.qualifications.service;
+package com.swacorp.crew.microservices.core.qualtype.service;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
-import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
-import com.swacorp.crew.microservices.core.qualifications.repository.QualificationRepository;
+import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
+import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualtype.repository.QualificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
 @Service
-public class QualificationTypeServiceImpl implements QualificationTypeService {
-    private static final Logger LOG = Logger.getLogger(QualificationTypeServiceImpl.class.getName());
+public class QualTypeTransformationServiceImpl implements QualTypeTransformationService {
+    private static final Logger LOG = Logger.getLogger(QualTypeTransformationServiceImpl.class.getName());
     @Autowired
     QualificationRepository repository;
 

@@ -1,14 +1,12 @@
-package com.swacorp.crew.microservices.core.qualifications.service;
+package com.swacorp.crew.microservices.core.qualtype.service;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
-import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
-
-import java.util.List;
+import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
 
 /**
  * Created by POD Norris on 5/11/16.
  */
-public interface QualificationTypeService {
+public interface QualTypeTransformationService {
 
     Qualification transformQualiticationType(QualificationType gemfireQualType);
     Qualification persistQualificationType2Oracle(Qualification oracleQualType);

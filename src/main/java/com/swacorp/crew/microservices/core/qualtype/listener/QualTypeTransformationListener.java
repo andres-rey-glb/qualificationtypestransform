@@ -1,30 +1,35 @@
-package com.swacorp.crew.microservices.core.qualifications.listener;
+package com.swacorp.crew.microservices.core.qualtype.listener;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.Qualification;
-import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
-import com.swacorp.crew.microservices.core.qualifications.service.QualificationTypeService;
+import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
+import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualtype.service.QualTypeTransformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.messaging.support.GenericMessage;
 
+import java.util.logging.Logger;
+
 /**
  * Created by x220804 on 6/23/2016.
  */
 @EnableBinding(Sink.class)
-public class QualificationTypesListener {
+public class QualTypeTransformationListener {
+    private static final Logger LOG = Logger.getLogger(QualTypeTransformationListener.class.getName());
+
     @Autowired
-    QualificationTypeService qualTransformService;
+    QualTypeTransformationService qualTransformService;
 
     @StreamListener(Sink.INPUT)
     public void consumeQualification(GenericMessage message) {
-        System.out.println("------------ INSIDE LISTENER ------------");
-        System.out.println("HEADER :"+message.getHeaders().get("eventType"));
+        LOG.info("------------ INSIDE LISTENER ------------");
+        LOG.info("QUALIFICATION TYPE][MESSAGE RECIEVED]- [HEADER][EVENT TYPE] :"+message.getHeaders().get("eventType"));
         QualificationType qualificationType = (QualificationType) message.getPayload();
-        System.out.println("QualificationType = " + qualificationType.toString());
+        LOG.info("[MESSAGE PAYLOAD] [QualificationType] : " + qualificationType.toString());
         Qualification qualification = qualTransformService.transformQualiticationType(qualificationType);
-        System.out.println("Qualification = " + qualification.toString());
+        LOG.info("[TRANSFORMED ENTITY] - [QUALIFICATION] : " + qualification.toString());
+
         if(message.getHeaders().get("eventType").equals("create")){
             qualTransformService.persistQualificationType2Oracle(qualification);
         }else if (message.getHeaders().get("eventType").equals("update")){
@@ -32,7 +37,5 @@ public class QualificationTypesListener {
         }else{
             qualTransformService.deleteQualificationType2Oracle(qualification);
         }
-
-
     }
 }

@@ -1,6 +1,6 @@
-package com.swacorp.crew.microservices.core.qualifications.exception;
+package com.swacorp.crew.microservices.core.qualtype.exception;
 
-import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

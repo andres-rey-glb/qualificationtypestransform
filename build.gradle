@@ -18,12 +18,33 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
+apply plugin: 'jacoco'
+apply plugin: 'application'
 
 war {
     baseName = 'qualificationType-transformation'
     version = '1.0.0-SNAPSHOT'
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+}
+
+test {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -50,7 +71,6 @@ repositories {
     maven { url 'https://mvnrepository.com/artifact/com.oracle/ojdbc14'}
     maven { url 'https://mvnrepository.com/artifact/com.h2database/h2' }
 }
-
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-test")
