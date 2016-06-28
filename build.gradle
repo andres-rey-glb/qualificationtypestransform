@@ -86,6 +86,7 @@ dependencies {
     compile("org.springframework.security:spring-security-jwt")
     compile("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    testCompile("com.h2database:h2:1.4.192")
 }
 
 dependencyManagement {
@@ -102,5 +103,5 @@ task wrapper(type: Wrapper) {
 bootRun {
     jvmArgs "-XX:MetaspaceSize=128m"
     addResources = false
-    main = 'com.swacorp.crew.microservices.core.qualifications.application.Application'
+    main = 'com.swacorp.crew.microservices.core.qualtype.application.Application'
 }

@@ -129,4 +129,28 @@ public class Qualification {
     public void setSubtype_block_min_required(Long subtype_block_min_required) {
         this.subtype_block_min_required = subtype_block_min_required;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Qualification that = (Qualification) o;
+
+        if (!getQualseqnumber().equals(that.getQualseqnumber())) return false;
+        if (!getQualtype().equals(that.getQualtype())) return false;
+        if (!getQualsubtype().equals(that.getQualsubtype())) return false;
+        if (!getQualdisplaylevel().equals(that.getQualdisplaylevel())) return false;
+        return getSubtype_block_min_required() != null ? getSubtype_block_min_required().equals(that.getSubtype_block_min_required()) : that.getSubtype_block_min_required() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getQualseqnumber().hashCode();
+        result = 31 * result + getQualtype().hashCode();
+        result = 31 * result + getQualsubtype().hashCode();
+        result = 31 * result + getQualdisplaylevel().hashCode();
+        return result;
+    }
 }
