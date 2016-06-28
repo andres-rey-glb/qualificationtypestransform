@@ -1,0 +1,7 @@
+server:
+    port: 0 #ramdom available port
+
+spring:
+  application:
+    name: PersistQualificationTypeTest
+  

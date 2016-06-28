@@ -2,8 +2,6 @@ package com.swacorp.crew.microservices.core.qualifications.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.annotation.Id;
-
 
 import java.io.Serializable;
 
@@ -12,7 +10,7 @@ import java.io.Serializable;
  */
 public class QualificationType implements Serializable  {
 
-    @Id
+
     private Integer qualificationId;
     private String type;
     private String SubType;

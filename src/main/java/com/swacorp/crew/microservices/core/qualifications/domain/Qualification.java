@@ -129,4 +129,23 @@ public class Qualification {
     public void setSubtype_block_min_required(Long subtype_block_min_required) {
         this.subtype_block_min_required = subtype_block_min_required;
     }
+
+    @Override
+    public String toString() {
+        return "Qualification{" +
+                "qualseqnumber=" + qualseqnumber +
+                ", qualtype='" + qualtype + '\'' +
+                ", qualsubtype='" + qualsubtype + '\'' +
+                ", qualdisplaylevel=" + qualdisplaylevel +
+                ", quallinescode1='" + quallinescode1 + '\'' +
+                ", quallinescode2='" + quallinescode2 + '\'' +
+                ", quallinescode3='" + quallinescode3 + '\'' +
+                ", qualprimary=" + qualprimary +
+                ", station='" + station + '\'' +
+                ", position='" + position + '\'' +
+                ", expires_in=" + expires_in +
+                ", block_min_required=" + block_min_required +
+                ", subtype_block_min_required=" + subtype_block_min_required +
+                '}';
+    }
 }

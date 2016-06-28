@@ -9,8 +9,6 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.messaging.support.GenericMessage;
 
-import java.net.URI;
-
 /**
  * Created by x220804 on 6/23/2016.
  */
@@ -20,10 +18,21 @@ public class QualificationTypesListener {
     QualificationTypeService qualTransformService;
 
     @StreamListener(Sink.INPUT)
-    public void consumeQualification(GenericMessage qualificationDate) {
-        Qualification qual = qualTransformService.transformQualiticationType((QualificationType) qualificationDate.getPayload());
+    public void consumeQualification(GenericMessage message) {
+        System.out.println("------------ INSIDE LISTENER ------------");
+        System.out.println("HEADER :"+message.getHeaders().get("eventType"));
+        QualificationType qualificationType = (QualificationType) message.getPayload();
+        System.out.println("QualificationType = " + qualificationType.toString());
+        Qualification qualification = qualTransformService.transformQualiticationType(qualificationType);
+        System.out.println("Qualification = " + qualification.toString());
+        if(message.getHeaders().get("eventType").equals("create")){
+            qualTransformService.persistQualificationType2Oracle(qualification);
+        }else if (message.getHeaders().get("eventType").equals("update")){
+            qualTransformService.updateQualificationType2Oracle(qualification);
+        }else{
+            qualTransformService.deleteQualificationType2Oracle(qualification);
+        }
 
-        //System.out.println(qualTransformService.persistQualificationType2Oracle(qual));
-        qualTransformService.deleteQualificationType2Oracle(qual);
+
     }
 }

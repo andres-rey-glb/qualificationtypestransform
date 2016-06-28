@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot' 
+
+jar {
+	baseName = 'persistqualtypeinfo'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+	compile("org.apache.commons:commons-lang3:3.0")
+	testCompile('org.springframework.boot:spring-boot-starter-test') 
+}
+
+dependencyManagement {
+	imports { 
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE" 
+	}
+}
+
+bootRun{
+	maxHeapSize = "128m"
+	jvmArgs "-XX:MaxPermSize=128m"
+	addResources = false
+	main = 'com.swacorp.crew.microservices.core.qualifications.app.PersistQualificationTypeInfo'
+}
