@@ -1,7 +1,7 @@
 package com.swacorp.crew.microservices.core.qualtype.service;
 
 import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
-import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
 import com.swacorp.crew.microservices.core.qualtype.repository.QualificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

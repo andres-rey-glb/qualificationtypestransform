@@ -1,7 +1,7 @@
 package com.swacorp.crew.microservices.core.qualtype.listener;
 
 import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
-import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
 import com.swacorp.crew.microservices.core.qualtype.service.QualTypeTransformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;

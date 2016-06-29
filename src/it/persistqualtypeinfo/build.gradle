@@ -28,6 +28,10 @@ repositories {
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
 	compile("org.apache.commons:commons-lang3:3.0")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.springframework.cloud:spring-cloud-starter-eureka")
+	compile("org.springframework.security.oauth:spring-security-oauth2:2.0.6.RELEASE")
+	compile("org.springframework.security:spring-security-jwt")
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
@@ -41,5 +45,5 @@ bootRun{
 	maxHeapSize = "128m"
 	jvmArgs "-XX:MaxPermSize=128m"
 	addResources = false
-	main = 'com.swacorp.crew.microservices.core.qualifications.app.PersistQualificationTypeInfo'
+	main = 'com.swacorp.crew.microservices.core.qualtype.app.PersistQualificationTypeInfo'
 }

@@ -1,4 +1,4 @@
-package com.swacorp.crew.microservices.core.qualtype.domain;
+package com.swacorp.crew.microservices.core.qualifications.domain;
 
 import java.io.Serializable;
 

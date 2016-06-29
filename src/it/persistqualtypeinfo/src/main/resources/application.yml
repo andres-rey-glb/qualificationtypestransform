@@ -4,4 +4,29 @@ server:
 spring:
   application:
     name: PersistQualificationTypeTest
+
+security:
+  oauth2:
+    client:
+        clientId: trusted-app
+        clientSecret: secret
+        grantType: client_credentials
+        scope: read
+        accessTokenUri: http://localhost:9999/uaa/oauth/token
+        clientAuthenticationScheme: header
+    resource:
+      jwt:
+        key-uri: http://localhost:9999/uaa/oauth/token_key
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+  client:
+    registryFetchIntervalSeconds: 5
+    instanceInfoReplicationIntervalSeconds: 5
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registerWithEureka: true
+    fetchRegistry: true
   

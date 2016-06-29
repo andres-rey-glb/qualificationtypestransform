@@ -1,6 +1,6 @@
 package com.swacorp.crew.microservices.core.qualtype.service;
 
-import com.swacorp.crew.microservices.core.qualtype.domain.QualificationType;
+import com.swacorp.crew.microservices.core.qualifications.domain.QualificationType;
 import com.swacorp.crew.microservices.core.qualtype.domain.Qualification;
 
 /**
